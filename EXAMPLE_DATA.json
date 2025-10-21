@@ -1,0 +1,62 @@
+{
+  "description": "Example data sent to webhook when saving a segment",
+  "example_1": {
+    "segment_name": "last_10_days_blog_visits",
+    "schema": [
+      {
+        "first_name": "First Name"
+      },
+      {
+        "last_name": "Last Name"
+      }
+    ]
+  },
+  "example_2": {
+    "segment_name": "active_users_with_account",
+    "schema": [
+      {
+        "first_name": "First Name"
+      },
+      {
+        "age": "Age"
+      },
+      {
+        "account_name": "Account Name"
+      },
+      {
+        "city": "City"
+      }
+    ]
+  },
+  "example_3": {
+    "segment_name": "complete_profile_users",
+    "schema": [
+      {
+        "first_name": "First Name"
+      },
+      {
+        "last_name": "Last Name"
+      },
+      {
+        "gender": "Gender"
+      },
+      {
+        "age": "Age"
+      },
+      {
+        "city": "City"
+      },
+      {
+        "state": "State"
+      }
+    ]
+  },
+  "notes": [
+    "Each schema item is an object with key-value pair",
+    "Key is the value (e.g., 'first_name')",
+    "Value is the label (e.g., 'First Name')",
+    "Schema array maintains the order of selection",
+    "Segment name is user-defined string"
+  ]
+}
+
