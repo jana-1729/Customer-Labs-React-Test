@@ -10,5 +10,5 @@ export const SCHEMA_OPTIONS: SchemaOption[] = [
   { label: 'State', value: 'state', trait: 'user' },
 ];
 
-export const WEBHOOK_URL = 'https://webhook.site/your-unique-id'; // Replace with your actual webhook URL
+export const WEBHOOK_URL = 'https://webhook.site/1eb1e536-c635-40ee-a567-8dfda0ab28e5'; // Replace with your actual webhook URL
 

@@ -12,7 +12,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
   const [currentSelection, setCurrentSelection] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Get available options (not yet selected)
   const getAvailableOptions = (): SchemaOption[] => {
     const selectedValues = selectedSchemas.map((schema) => schema.value);
     return SCHEMA_OPTIONS.filter(
@@ -20,12 +19,11 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
     );
   };
 
-  // Handle adding a new schema
-  const handleAddSchema = () => {
-    if (!currentSelection) return;
+  const handleAddSchema = (value: string) => {
+    if (!value) return;
 
     const selectedOption = SCHEMA_OPTIONS.find(
-      (opt) => opt.value === currentSelection
+      (opt) => opt.value === value
     );
 
     if (selectedOption) {
@@ -36,7 +34,7 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
       };
 
       setSelectedSchemas([...selectedSchemas, newSchema]);
-      setCurrentSelection(''); // Reset the dropdown
+      setCurrentSelection('');
     }
   };
 
@@ -60,7 +58,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
     }
   };
 
-  // Get available options for a specific dropdown (excluding other selected values)
   const getAvailableOptionsForDropdown = (currentId: string): SchemaOption[] => {
     const selectedValues = selectedSchemas
       .filter((schema) => schema.id !== currentId)
@@ -89,7 +86,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
       return;
     }
 
-    // Format data according to requirements
     const data: SegmentData = {
       segment_name: segmentName,
       schema: selectedSchemas.map((schema) => ({
@@ -127,7 +123,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header */}
       <div className="bg-teal-600 text-white px-6 py-4 flex items-center">
         <button onClick={onClose} className="mr-3 hover:opacity-80">
           <svg
@@ -245,7 +240,7 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
             <span className="w-3 h-3 bg-gray-300 rounded-full flex-shrink-0"></span>
             <select
               value={currentSelection}
-              onChange={(e) => setCurrentSelection(e.target.value)}
+              onChange={(e) => handleAddSchema(e.target.value)}
               className="flex-1 px-3 py-2 border border-gray-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <option value="">Add schema to segment</option>
@@ -255,13 +250,13 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
                 </option>
               ))}
             </select>
-            <div className="w-5"></div> {/* Spacer for alignment */}
+            <div className="w-5"></div>
           </div>
         )}
 
         {/* Add New Schema Link */}
         <button
-          onClick={handleAddSchema}
+          onClick={() => handleAddSchema(currentSelection)}
           disabled={!currentSelection}
           className={`text-teal-600 text-sm hover:underline flex items-center gap-1 ${
             !currentSelection ? 'opacity-50 cursor-not-allowed' : ''
