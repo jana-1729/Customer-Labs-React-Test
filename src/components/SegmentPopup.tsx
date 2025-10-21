@@ -142,9 +142,7 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
         <h2 className="text-xl font-medium">Saving Segment</h2>
       </div>
 
-      {/* Content */}
       <div className="flex-1 px-6 py-6 overflow-y-auto">
-        {/* Segment Name Input */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter the Name of the Segment
@@ -158,12 +156,10 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
           />
         </div>
 
-        {/* Instructions */}
         <p className="text-sm text-gray-700 mb-4">
           To save your segment, you need to add the schemas to build the query
         </p>
 
-        {/* Legend */}
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 bg-green-500 rounded-full"></span>
@@ -175,7 +171,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Blue Box with Selected Schemas */}
         {selectedSchemas.length > 0 && (
           <div className="border-2 border-blue-400 rounded p-4 mb-4 bg-blue-50">
             <div className="space-y-3">
@@ -192,7 +187,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
                       }`}
                     ></span>
 
-                    {/* Dropdown */}
                     <select
                       value={schema.value}
                       onChange={(e) =>
@@ -208,7 +202,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
                       ))}
                     </select>
 
-                    {/* Remove Button */}
                     <button
                       onClick={() => handleRemoveSchema(schema.id)}
                       className="text-gray-400 hover:text-gray-600 flex-shrink-0"
@@ -234,7 +227,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
           </div>
         )}
 
-        {/* Add Schema Dropdown */}
         {availableOptions.length > 0 && (
           <div className="flex items-center gap-3 mb-4">
             <span className="w-3 h-3 bg-gray-300 rounded-full flex-shrink-0"></span>
@@ -254,7 +246,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
           </div>
         )}
 
-        {/* Add New Schema Link */}
         <button
           onClick={() => handleAddSchema(currentSelection)}
           disabled={!currentSelection}
@@ -267,7 +258,6 @@ const SegmentPopup: React.FC<SegmentPopupProps> = ({ onClose }) => {
         </button>
       </div>
 
-      {/* Footer */}
       <div className="px-6 py-4 border-t flex items-center gap-3">
         <button
           onClick={handleSave}
